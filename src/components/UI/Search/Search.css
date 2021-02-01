@@ -1,0 +1,58 @@
+.Search {
+    /* local variables */
+    --search-font: normal 400 24px / 28px 'Roboto', sans-serif;
+    --search-height: 64px;
+    --search-borderRadius: 32px;
+
+    color: #000000;
+    width: 100%;
+    height: var(--search-height);
+    border-radius: var(--search-borderRadius);
+    background: #FFFDFD;
+}
+
+.Search__input {
+    width: inherit;
+    height: inherit;
+    font: var(--search-font);
+    color: #000000;
+    background-color: transparent;
+    padding: 18px 30px;
+    appearance: none;
+    border: none;
+}
+.SuggestionOpen{
+    border-radius: var(--search-borderRadius) var(--search-borderRadius) 0 0;
+}
+.Search__input::placeholder {
+    color: #000;
+}
+.react-dadata__suggestions.position-suggestions{
+    width: 98%;
+    position: relative;
+    top:-20px;
+    left:1%;
+    border-radius: 0 0 var(--search-borderRadius) var(--search-borderRadius);
+    padding: 18px 8px;
+    box-shadow: none;
+}
+.react-dadata__suggestion.custom-suggestion{
+    font: var(--search-font);
+    font-size: 24px;
+}
+
+
+/* modifications */
+.Search--darkMode {
+    background: #2b2b2b;
+}
+
+.Search--darkMode > .Search__input,
+.Search--darkMode > .Search__input::placeholder {
+    color: #FFFDFD;
+}
+
+.Search--disabled{
+    opacity: 0.2;
+    cursor: not-allowed;
+}

@@ -1,0 +1,22 @@
+.input_search{
+    height: 64px;
+    width: 100%;
+    background: #FFFDFD;
+    border-radius: 100px;
+    font-size: 24px;
+    line-height: 28px;
+    color: #000000;
+    padding:18px 30px;
+
+    border: none;
+}
+.input_search::placeholder{
+    color:#000;
+}
+.div_search{
+    width:100%;
+    grid-column-start: 2;
+    grid-column-end: -2;
+    max-width: 810px;
+    margin: 168px auto 0;
+}
