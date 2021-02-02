@@ -3,3 +3,25 @@
     max-width: 810px;
     margin: 168px auto 0;
 }
+.App {
+    margin: auto;
+    display: grid;
+    max-width: 1140px;
+    grid-template-columns: repeat(12,1fr);
+    grid-column-gap: 30px;
+    grid-template-rows: none;
+  }
+  .wrapper_content{
+      margin-top: 14px;
+    grid-column-start: 3;
+    grid-column-end: -3;
+  }
+  
+  .background_image{
+    height: 100vh;
+    background-image: url("./image/89653cfdf71072dc356b448a718194c4.jpg");
+  }
+  
+  .background_shadow{
+    background: linear-gradient(180deg, #000000 7.81%, rgba(255, 255, 255, 0) 100%);
+  }

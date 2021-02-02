@@ -20,11 +20,11 @@ const App = (props) => {
     }, [props.lat,props.lon])
 
     return (
-        <div className={style.background_image}>
-            <div className={style.background_shadow}>
-                <div className={style.App}>
+        <div className='background_image'>
+            <div className='background_shadow'>
+                <div className="App">
                     <Search className='Search--layout'/>
-                    <div className={style.wrapper_content}>
+                    <div className='wrapper_content'>
                         {props.pending ? <h1>22222</h1> : <WeatherCityNow/>}
                         <div className="weather-day">
                             <div className="item">

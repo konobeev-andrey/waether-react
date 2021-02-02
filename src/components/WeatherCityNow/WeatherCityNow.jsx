@@ -11,7 +11,8 @@ const WeatherCityNow = (props) => {
 
 
     return props.pending ? <h1>111111</h1> :(
-        <div className='weather-toDay'>
+        <div className='weather-toDay'> 
+        <div className='weather-toDay__block-now'>
             <div className='wrapper-sity-date'>
                 <div className='wrapper-sity-date__name-sity'>{props.city}</div>
                 <div className='wrapper-sity-date__today-date'>{props.date}</div>
@@ -40,6 +41,7 @@ const WeatherCityNow = (props) => {
                     </div>
                 </div>
             </div>
+        </div>
             <div className="weather-hourly">
                 <div className="item">
                     <p className='item__time'>00:00</p>
