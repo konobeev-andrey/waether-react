@@ -97,13 +97,16 @@ const getDate = (store) => {
     })
     return currentDate
 }
+const round = (number) => {
+    return Math.round(number)
+}
 const mstp = (store) => ({
     city: store.rootReducer.city.value,
     date: getDate(store),
-    temp: store.rootReducer.city.data.current.temp,
-    feelsLike: store.rootReducer.city.data.current.feels_like,
+    temp: round(store.rootReducer.city.data.current.temp),
+    feelsLike: round(store.rootReducer.city.data.current.feels_like),
     humidity: store.rootReducer.city.data.current.humidity,
-    windSpeed: store.rootReducer.city.data.current.wind_speed,
+    windSpeed: round(store.rootReducer.city.data.current.wind_speed),
     pressure: store.rootReducer.city.data.current.pressure,
     description: store.rootReducer.city.data.current.weather[0].description,
 })

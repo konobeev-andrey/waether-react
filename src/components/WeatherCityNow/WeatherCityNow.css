@@ -1,6 +1,10 @@
+:root {
+    --fontSize-sityDate: 36px;
+    --fontSize-temperature: 64px;
+    --fontSize-toDayBlokNow: 24px;
+}
+
 .weather-toDay {
-    grid-column-start: 3;
-    grid-column-end: -3;
     max-width: 750px;
     background: rgba(255, 255, 255, 0.05);
     border-radius:5px;
@@ -11,6 +15,7 @@
     display: grid;
     grid-template-columns: repeat(8, 1fr);
     grid-column-gap: 30px;
+    font-size: var(--fontSize-toDayBlokNow);
     
 }
 
@@ -18,8 +23,11 @@
     grid-column: 1/-1;
     font-style: normal;
     font-weight: normal;
-    font-size: 36px;
+    font-size: var(--fontSize-sityDate);
     line-height: 42px;
+    display: grid;
+    grid-template-columns: 70% 27%;
+    grid-column-gap: 3%;
 }
 
 .wrapper-sity-date__today-date {
@@ -32,17 +40,19 @@
 .wrapper-sity-date__name-sity {
     text-align: left;
     display: inline-block;
-    max-width: 75%;
 }
 
 .weather-now {
     grid-column: 2/-2;
     margin-top: 42px;
+    display: grid;
+    grid-template-columns: repeat( 6, 1fr);
 }
 
 .weather-now__temperature {
     display: inline-block;
     height: 60px;
+    grid-column: 1/4;
 }
 
 .weather-now__temperature > img {
@@ -57,21 +67,21 @@
     float: left;
     font-style: normal;
     font-weight: normal;
-    font-size: 64px;
+    font-size: var(--fontSize-temperature);
     line-height: 75px;
 }
 
 .weather-now__description {
     display: inline-block;
     float: right;
-    font-size: 24px;
     line-height: 28px;
+    grid-column: 4/-1;
 }
 
 .weather-now__wind-humidity-pressure {
     text-align: center;
-    font-size: 24px;
     line-height: 28px;
+    grid-column: 1/-1;
 }
 
 .weather-now__wind,
@@ -160,3 +170,10 @@
         grid-column: 1/-1;
     }
    }
+@media screen and (max-width: 890px) {
+    :root{
+        --fontSize-temperature:48px;
+        --fontSize-sityDate: 28px;
+        --fontSize-toDayBlokNow: 20px;
+    }
+}
