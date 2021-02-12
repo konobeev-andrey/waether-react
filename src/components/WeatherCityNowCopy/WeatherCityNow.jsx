@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import './WeatherCityNow.css';
 import cn from 'classnames'
+import iconDefault from '../../image/IconWeather/04n.png'
 import iconWind from '../../image/wind.png'
 import iconHumidity from '../../image/humidity.png'
 import iconPressure from '../../image/pressure.png'
 import {connect} from "react-redux";
 
-const WeatherCityNow = (props) => {
+const WeatherCityNowCopy = (props) => {
     const [icon ,setIcon] = useState('')
     useEffect(() => {
         import (`../../image/IconWeather/${props.iconCode}.png`).then((icon) => setIcon(icon.default) )
@@ -27,8 +28,8 @@ const WeatherCityNow = (props) => {
                 </div>
                 <div className="weather-now__description">
                     <p>{props.description}</p>
-                    <p>ощущается как {props.feelsLike}°</p>
                 </div>
+                <div className="weather-now__feelsLike"><p>ощущается как {props.feelsLike}°</p></div>
                 <div className="weather-now__wind-humidity-pressure">
                     <div className="weather-now__wind">
                         <img src={iconWind} alt="Icon"/>
@@ -114,5 +115,5 @@ const mstp = (store) => ({
     description: store.rootReducer.city.data.current.weather[0].description,
     iconCode: store.rootReducer.city.data.current.weather[0].icon,
 })
-export default connect(mstp,{})(WeatherCityNow);
+export default connect(mstp,{})(WeatherCityNowCopy);
 

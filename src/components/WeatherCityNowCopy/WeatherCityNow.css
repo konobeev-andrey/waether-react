@@ -1,0 +1,181 @@
+:root {
+    --fontSize-sityDate: 36px;
+    --fontSize-temperature: 64px;
+    --fontSize-toDayBlokNow: 24px;
+}
+
+.weather-toDay {
+    max-width: 750px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius:5px;
+}
+.weather-toDay__block-now{
+    padding: 15px;
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-column-gap: 30px;
+    font-size: var(--fontSize-toDayBlokNow);
+    
+}
+
+.wrapper-sity-date {
+    grid-column: 1/-1;
+    font-style: normal;
+    font-weight: normal;
+    font-size: var(--fontSize-sityDate);
+    line-height: 42px;
+    display: grid;
+    grid-template-columns: 70% 27%;
+    grid-column-gap: 3%;
+}
+
+.wrapper-sity-date__today-date {
+    text-align: right;
+    float: right;
+    display: inline-block;
+
+}
+
+.wrapper-sity-date__name-sity {
+    text-align: left;
+    display: inline-block;
+}
+
+.weather-now {
+    grid-column: 2/-2;
+    margin-top: 42px;
+    display: grid;
+    grid-template-columns: repeat( 6, 1fr);
+}
+
+.weather-now__temperature {
+    display: inline-block;
+    height: 60px;
+    grid-column: 1/4;
+}
+
+.weather-now__temperature > img {
+    position: relative;
+    top: -14px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.weather-now__temperature > p {
+    display: inline-block;
+    float: left;
+    font-style: normal;
+    font-weight: normal;
+    font-size: var(--fontSize-temperature);
+    line-height: 75px;
+}
+
+.weather-now__description {
+    display: inline-block;
+    float: right;
+    line-height: 28px;
+    grid-column: 4/-1;
+}
+
+.weather-now__wind-humidity-pressure {
+    text-align: center;
+    line-height: 28px;
+    grid-column: 1/-1;
+}
+
+.weather-now__wind,
+.weather-now__humidity,
+.weather-now__pressure {
+    display: inline-block;
+}
+
+.weather-now__wind > img,
+.weather-now__humidity > img,
+.weather-now__pressure > img {
+    display: inline-block;
+}
+
+.weather-now__wind > p,
+.weather-now__humidity > p,
+.weather-now__pressure > p {
+    display: inline-block;
+    float: right;
+}
+
+.weather-now__pressure > p {
+    padding-left: 5px;
+}
+
+.weather-now__wind {
+    float: left;
+}
+
+.weather-now__pressure {
+    float: right;
+}
+
+.weather-hourly {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    padding-top: 22px;
+    padding-bottom: 15px;
+    height: 98px;
+    box-sizing: content-box;
+}
+.weather-day {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    padding-top: 22px;
+    padding-bottom: 15px;
+    height: 130px;
+    box-sizing: content-box;
+}
+
+.item {
+    height: 100%;
+
+}
+
+.item > div {
+    position: relative;
+    overflow: hidden;
+    height: 50%;
+}
+
+.item > div > img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+.item > .item__temperature {
+}
+
+.weather-now__feelsLike{
+    grid-column: 1/-1;
+}
+@media screen and (max-width: 1120px) {
+    .weather-now{
+        grid-column: 1/-1;
+    }
+   }
+@media screen and (max-width: 890px) {
+    :root{
+        --fontSize-temperature:48px;
+        --fontSize-sityDate: 28px;
+        --fontSize-toDayBlokNow: 20px;
+    }
+}

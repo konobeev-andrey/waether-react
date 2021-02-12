@@ -6,6 +6,7 @@ import WeatherCityNow from "./components/WeatherCityNow/WeatherCityNow";
 import icon from "./image/IconWeather/04n.png";
 import {getWeatherInCity} from "./Redux/weatherCitySlice";
 import {connect, useDispatch} from "react-redux";
+import WeatherCityNowCopy from "./components/WeatherCityNowCopy/WeatherCityNow";
 
 
 const {Search} =UI
@@ -25,7 +26,7 @@ const App = (props) => {
                 <div className="App">
                     <Search className='Search--layout'/>
                     <div className='wrapper_content'>
-                        {props.pending ? <h1>22222</h1> : <WeatherCityNow/>}
+                        {props.pending ? <h1>22222</h1> : <WeatherCityNowCopy/>}
                         <div className="weather-day">
                             <div className="item">
                                 <p className='item__time'>28 Nov</p>
