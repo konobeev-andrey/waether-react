@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import style from './app.module.css';
 import './App.css'
 import {UI} from  './components/UI'
-import WeatherCityNow from "./components/WeatherCityNow/WeatherCityNow";
+// import WeatherCityNow from "./components/WeatherCityNow/WeatherCityNow";
 import icon from "./image/IconWeather/04n.png";
 import {getWeatherInCity} from "./Redux/weatherCitySlice";
 import {connect, useDispatch} from "react-redux";

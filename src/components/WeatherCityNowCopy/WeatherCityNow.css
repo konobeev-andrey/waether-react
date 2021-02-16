@@ -11,23 +11,15 @@
 }
 .weather-toDay__block-now{
     padding: 15px;
-    grid-column: 1/-1;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-column-gap: 30px;
     font-size: var(--fontSize-toDayBlokNow);
     
 }
 
 .wrapper-sity-date {
-    grid-column: 1/-1;
     font-style: normal;
     font-weight: normal;
     font-size: var(--fontSize-sityDate);
     line-height: 42px;
-    display: grid;
-    grid-template-columns: 70% 27%;
-    grid-column-gap: 3%;
 }
 
 .wrapper-sity-date__today-date {
@@ -43,23 +35,32 @@
 }
 
 .weather-now {
+    padding-top: 42px;
     grid-column: 2/-2;
-    margin-top: 42px;
+    margin: 0 auto;
+    max-width: 550px;
     display: grid;
-    grid-template-columns: repeat( 6, 1fr);
+    grid-template-columns: repeat( 2, 1fr);
+    grid-template-areas:
+        'temperature description'
+        'temperature feelsLike '
+        'wind-humidity-pressure wind-humidity-pressure ';
+
 }
 
 .weather-now__temperature {
+    grid-area: temperature;
     display: inline-block;
     height: 60px;
-    grid-column: 1/4;
 }
 
-.weather-now__temperature > img {
-    position: relative;
-    top: -14px;
-    display: inline-block;
-    vertical-align: bottom;
+.weather-now__temperature > .wrapperImg {
+    height: 100%;
+    min-width: 60px;
+}
+.weather-now__temperature > .wrapperImg > img {
+    left:40%;
+    top: 60%;
 }
 
 .weather-now__temperature > p {
@@ -72,16 +73,20 @@
 }
 
 .weather-now__description {
+    grid-area: description;
     display: inline-block;
     float: right;
     line-height: 28px;
-    grid-column: 4/-1;
 }
 
+.weather-now__feelsLike {
+    grid-area: feelsLike;
+}
 .weather-now__wind-humidity-pressure {
+    grid-area: wind-humidity-pressure;
     text-align: center;
     line-height: 28px;
-    grid-column: 1/-1;
+    padding-top: 10px;
 }
 
 .weather-now__wind,
@@ -152,8 +157,12 @@
     overflow: hidden;
     height: 50%;
 }
-
-.item > div > img {
+.wrapperImg{
+    position: relative;
+    overflow: hidden;
+    height: 50%;
+}
+.wrapperImg > img {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -163,15 +172,6 @@
 
 .item > .item__temperature {
 }
-
-.weather-now__feelsLike{
-    grid-column: 1/-1;
-}
-@media screen and (max-width: 1120px) {
-    .weather-now{
-        grid-column: 1/-1;
-    }
-   }
 @media screen and (max-width: 890px) {
     :root{
         --fontSize-temperature:48px;
@@ -179,3 +179,22 @@
         --fontSize-toDayBlokNow: 20px;
     }
 }
+@media screen and (max-width: 440px) {
+    .weather-now {
+        grid-template-columns: repeat( 6, 1fr);
+        grid-template-areas:
+        '. temperature temperature temperature description  .'
+        ' .feelsLike feelsLike feelsLike feelsLike  .'
+        '  wind-humidity-pressure wind-humidity-pressure wind-humidity-pressure wind-humidity-pressure wind-humidity-pressure wind-humidity-pressure';
+
+    }
+    .weather-now__description {
+        line-height: 14px;
+    }
+    :root{
+        --fontSize-temperature:48px;
+        --fontSize-sityDate: 28px;
+        --fontSize-toDayBlokNow: 14px;
+    }
+
+   }
