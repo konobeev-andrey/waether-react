@@ -56,11 +56,10 @@
 
 .weather-now__temperature > .wrapperImg {
     height: 100%;
-    min-width: 60px;
+    min-width: 27px;
 }
 .weather-now__temperature > .wrapperImg > img {
-    left:40%;
-    top: 60%;
+    left:36%;
 }
 
 .weather-now__temperature > p {
@@ -189,12 +188,19 @@
 
     }
     .weather-now__description {
+        padding-top: 12px;
         line-height: 14px;
     }
+    .wrapper-sity-date {
+        line-height: 24px;
+    }
+    .weather-now__temperature > p {
+        line-height: 60px;
+    }
     :root{
-        --fontSize-temperature:48px;
-        --fontSize-sityDate: 28px;
-        --fontSize-toDayBlokNow: 14px;
+        --fontSize-temperature:40px;
+        --fontSize-sityDate: 20px;
+        --fontSize-toDayBlokNow: 12px;
     }
 
    }

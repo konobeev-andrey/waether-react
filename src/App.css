@@ -10,7 +10,7 @@
     display: grid;
     max-width: 1140px;
     grid-template-columns: repeat(12, 1fr);
-    grid-column-gap: 30px;
+    /* grid-column-gap: 30px; */
     grid-template-rows: none;
 }
 
