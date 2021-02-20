@@ -6,11 +6,11 @@ import {choose, getWeatherInCity} from "../../../Redux/weatherCitySlice";
 import {connect, useDispatch} from "react-redux";
 
 
-export function Search(props) {
+function Search(props) {
 
-    const [suggestionOpen, setSuggestionOpen] = useState("")
+    const [suggestionOpen, setSuggestionOpen] = useState('')
 
-    const {className, isDarkMode,    ...input} = props;
+    const {className, isDarkMode, choose, ...input} = props;
     const token = '9e301eb40c65b7139ac2be7fec19e0d4bdc53eac'
 
     const query = {
@@ -21,26 +21,36 @@ export function Search(props) {
     }
 
     const dispatch = useDispatch()
-
-    return (<ReactDadataBox payloadModifier={query} token={token}
+    const localChoose = (e) => {
+        if (!(e.value === '')) {
+            dispatch(choose(e))
+        }
+    }
+    return (<ReactDadataBox payloadModifier={query}
+                            token={token}
+                            type={'address'}
+                            allowClear={false}
+                            showNote={false}
+                            allowCustomValue={true}
                             className={cn({
+                                // "Search__input":true,
                                 "Search": true,
                                 "Search--darkMode": isDarkMode,
                                 "Search--disabled": props.disabled,
-                                // "SuggestionOpen" : suggestionOpen,
                             }, className)}
                             placeholder='Search...'
                             onChange={(e) => {
                                 setSuggestionOpen('')
-                                dispatch(choose(e))
+                                localChoose(e)
                             }}
                             customStyles={{
                                 'react-dadata__suggestion': 'custom-suggestion',
-                                'react-dadata__suggestions': 'position-suggestions'
+                                'react-dadata__suggestions': 'position-suggestions',
                             }}
-                            customInput={({onChange, value}) => (
+                            customInput={({onChange, value, ...props}) => (
                                 <input
-                                    autoComplete="off"
+                                    {...props}
+                                    autoComplete="on"
                                     className={'Search__input'}
                                     type="search"
                                     onChange={e => {
@@ -51,9 +61,9 @@ export function Search(props) {
                                     value={suggestionOpen}
                                     {...input}
                                 />
-                            )}
-                            showNote={false}/>
+                            )}/>
 
     )
 }
-export default connect(null, {})(Search)
+
+export default connect(null, {choose})(Search)

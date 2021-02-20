@@ -2,7 +2,7 @@
 .Search--layout {
     grid-column: 2/-2;
     max-width: 810px;
-    margin: 168px auto 0;
+    margin: 17.7% auto 0;
 }
 
 .App {
@@ -15,8 +15,10 @@
 }
 
 .wrapper_content {
-    margin-top: 14px;
-    grid-column: 3/-3
+    margin: 14px auto 0;
+    grid-column: 2/-2;
+    width: 100%;
+    max-width: 760px;
 }
 
 .background_image {

@@ -5,7 +5,7 @@
 }
 
 .weather-toDay {
-    max-width: 750px;
+    max-width: 760px;
     background: rgba(255, 255, 255, 0.05);
     border-radius:5px;
 }
@@ -35,7 +35,7 @@
 }
 
 .weather-now {
-    padding-top: 42px;
+    padding-top: 5.5%;
     grid-column: 2/-2;
     margin: 0 auto;
     max-width: 550px;
@@ -119,19 +119,19 @@
     float: right;
 }
 
-.weather-hourly {
-    grid-column-start: 1;
-    grid-column-end: -1;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    font-size: 24px;
-    line-height: 28px;
-    text-align: center;
-    padding-top: 22px;
-    padding-bottom: 15px;
-    height: 98px;
-    box-sizing: content-box;
-}
+/*.weather-hourly {*/
+/*    grid-column-start: 1;*/
+/*    grid-column-end: -1;*/
+/*    display: grid;*/
+/*    grid-template-columns: repeat(8, 1fr);*/
+/*    font-size: 24px;*/
+/*    line-height: 28px;*/
+/*    text-align: center;*/
+/*    padding-top: 22px;*/
+/*    padding-bottom: 15px;*/
+/*    height: 98px;*/
+/*    box-sizing: content-box;*/
+/*}*/
 .weather-day {
     grid-column-start: 1;
     grid-column-end: -1;

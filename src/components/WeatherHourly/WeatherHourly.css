@@ -1,0 +1,17 @@
+.weather-hourly {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    padding-top: 22px;
+    padding-bottom: 15px;
+    height: 98px;
+    box-sizing: content-box;
+}
+@media screen and (max-width: 600px) {
+    .weather-hourly {
+        overflow-x: auto;
+        grid-column-gap: 20px;
+    }
+}

@@ -6,6 +6,7 @@ import iconWind from '../../image/wind.png'
 import iconHumidity from '../../image/humidity.png'
 import iconPressure from '../../image/pressure.png'
 import {connect} from "react-redux";
+import WeatherHourly from "../WeatherHourly/WeatherHourly";
 
 const WeatherCityNowCopy = (props) => {
     const [icon ,setIcon] = useState('')
@@ -13,6 +14,14 @@ const WeatherCityNowCopy = (props) => {
         import (`../../image/IconWeather/${props.iconCode}.png`).then((icon) => setIcon(icon.default) )
     }, [props.iconCode])
 
+    const filterHourly = (hourly) => {
+        const f =  hourly.reduce((e, r, t) => {
+            if(t%2 === 0) e.push(r)
+            return e
+        }, [])
+        return f
+    }
+    console.log(filterHourly(props.weatherHourly))
 
     return props.pending ? <h1>111111</h1> :(
         <div className='weather-toDay'> 
@@ -46,49 +55,7 @@ const WeatherCityNowCopy = (props) => {
                 </div>
             </div>
         </div>
-            <div className="weather-hourly">
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-                <div className="item">
-                    <p className='item__time'>00:00</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                    <p className='item__temperature'>+2.3°</p>
-                </div>
-
-            </div>
+            <WeatherHourly icon={icon}/>
         </div>
     );
 };
@@ -114,6 +81,7 @@ const mstp = (store) => ({
     pressure: store.rootReducer.city.data.current.pressure,
     description: store.rootReducer.city.data.current.weather[0].description,
     iconCode: store.rootReducer.city.data.current.weather[0].icon,
+    weatherHourly: store.rootReducer.city.data.hourly,
 })
 export default connect(mstp,{})(WeatherCityNowCopy);
 

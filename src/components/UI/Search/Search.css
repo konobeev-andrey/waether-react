@@ -10,8 +10,7 @@
     border-radius: var(--search-borderRadius);
     background: #FFFDFD;
 }
-
-.Search__input {
+.Search > input {
     width: inherit;
     height: inherit;
     font: var(--search-font);
@@ -21,11 +20,31 @@
     appearance: none;
     border: none;
 }
+.Search > input::placeholder {
+    color: #000;
+}
+.Search > .react-dadata__input-suffix{
+    right: 30px;
+}
+.Search > .react-dadata__input-suffix > .react-dadata__icon{
+    width: 25px;
+    height: 25px;
+    opacity: 1;
+    background-color: #fff;
+}
+.Search > .react-dadata__input-suffix > .react-dadata__icon-clear:before,
+.Search > .react-dadata__input-suffix > .react-dadata__icon-clear:after{
+    position: absolute;
+    top: -3px;
+    left: 12px;
+    content: ' ';
+    height: 30px;
+    width: 2px;
+    background-color: #000;
+}
+
 .SuggestionOpen{
     border-radius: var(--search-borderRadius) var(--search-borderRadius) 0 0;
-}
-.Search__input::placeholder {
-    color: #000;
 }
 .react-dadata__suggestions.position-suggestions{
     width: 98%;
@@ -38,7 +57,6 @@
 }
 .react-dadata__suggestion.custom-suggestion{
     font: var(--search-font);
-    font-size: 24px;
 }
 
 
@@ -55,4 +73,10 @@
 .Search--disabled{
     opacity: 0.2;
     cursor: not-allowed;
+}
+
+@media screen and (max-width: 890px) {
+    .Search {
+        --search-font: normal 400 20px / 20px 'Roboto', sans-serif;
+    }
 }
