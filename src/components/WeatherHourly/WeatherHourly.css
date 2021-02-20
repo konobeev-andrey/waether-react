@@ -13,5 +13,6 @@
     .weather-hourly {
         overflow-x: auto;
         grid-column-gap: 20px;
+        padding-left: 15px;
     }
 }

@@ -9,60 +9,58 @@ import {connect} from "react-redux";
 import WeatherHourly from "../WeatherHourly/WeatherHourly";
 
 const WeatherCityNowCopy = (props) => {
-    const [icon ,setIcon] = useState('')
+    const [icon, setIcon] = useState('')
     useEffect(() => {
-        import (`../../image/IconWeather/${props.iconCode}.png`).then((icon) => setIcon(icon.default) )
+        import (`../../image/IconWeather/${props.iconCode}.png`).then((icon) => setIcon(icon.default))
     }, [props.iconCode])
 
     const filterHourly = (hourly) => {
-        const f =  hourly.reduce((e, r, t) => {
-            if(t%2 === 0) e.push(r)
-            return e
+        return hourly.reduce((arr, hour, index) => {
+            if (24 > index && index % 3 === 0) arr.push(hour)
+            return arr
         }, [])
-        return f
     }
-    console.log(filterHourly(props.weatherHourly))
 
-    return props.pending ? <h1>111111</h1> :(
-        <div className='weather-toDay'> 
-        <div className='weather-toDay__block-now'>
-            <div className='wrapper-sity-date'>
-                <div className='wrapper-sity-date__name-sity'>{props.city}</div>
-                {/*<div className='wrapper-sity-date__today-date'>{props.date}</div>*/}
+    return props.pending ? <h1>111111</h1> : (
+        <div className='weather-toDay'>
+            <div className='weather-toDay__block-now'>
+                <div className='wrapper-sity-date'>
+                    <div className='wrapper-sity-date__name-sity'>{props.city}</div>
+                    {/*<div className='wrapper-sity-date__today-date'>{props.date}</div>*/}
+                </div>
+                <div className="weather-now">
+                    <div className="weather-now__temperature">
+                        <p>{props.temp}°</p>
+                        <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
+                    </div>
+                    <div className="weather-now__description">
+                        <p>{props.description}</p>
+                    </div>
+                    <div className="weather-now__feelsLike"><p>ощущается как {props.feelsLike}°</p></div>
+                    <div className="weather-now__wind-humidity-pressure">
+                        <div className="weather-now__wind">
+                            <img src={iconWind} alt="Icon"/>
+                            <p>{props.windSpeed} м/с, ЮЗ</p>
+                        </div>
+                        <div className="weather-now__humidity">
+                            <img src={iconHumidity} alt="Icon"/>
+                            <p>{props.humidity}%</p>
+                        </div>
+                        <div className="weather-now__pressure">
+                            <img src={iconPressure} alt="Icon"/>
+                            <p>{props.pressure} мм</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div className="weather-now">
-                <div className="weather-now__temperature">
-                    <p>{props.temp}°</p>
-                    <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-                </div>
-                <div className="weather-now__description">
-                    <p>{props.description}</p>
-                </div>
-                <div className="weather-now__feelsLike"><p>ощущается как {props.feelsLike}°</p></div>
-                <div className="weather-now__wind-humidity-pressure">
-                    <div className="weather-now__wind">
-                        <img src={iconWind} alt="Icon"/>
-                        <p>{props.windSpeed} м/с, ЮЗ</p>
-                    </div>
-                    <div className="weather-now__humidity">
-                        <img src={iconHumidity} alt="Icon"/>
-                        <p>{props.humidity}%</p>
-                    </div>
-                    <div className="weather-now__pressure">
-                        <img src={iconPressure} alt="Icon"/>
-                        <p>{props.pressure} мм</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <WeatherHourly icon={icon}/>
+            <WeatherHourly hourly={filterHourly(props.weatherHourly)} icon={icon}/>
         </div>
     );
 };
 
 const getDate = (store) => {
     const dt = store.rootReducer.city.data.current.dt
-    const currentDate =  new Date(+(dt + '000')).toLocaleString('ru', {
+    const currentDate = new Date(+(dt + '000')).toLocaleString('ru', {
         month: 'short',
         day: 'numeric'
     })
@@ -83,5 +81,5 @@ const mstp = (store) => ({
     iconCode: store.rootReducer.city.data.current.weather[0].icon,
     weatherHourly: store.rootReducer.city.data.hourly,
 })
-export default connect(mstp,{})(WeatherCityNowCopy);
+export default connect(mstp, {})(WeatherCityNowCopy);
 
