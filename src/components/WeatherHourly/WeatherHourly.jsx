@@ -2,25 +2,23 @@ import React from 'react';
 import './WeatherHourly.css'
 import Item from "../Item/Item";
 
-const WeatherHourly = ({hourly,icon}) => {
-    const g = hourly.map((hour) => {
-       return (<div className="item">
-            <p className='item__time'>00:00</p>
-            <div className="wrapperImg"><img src={icon} alt="Icon"/></div>
-            <p className='item__temperature'>{hour.temp}°</p>
-        </div>)
-    })
-
+const WeatherHourly = ({hourly}) => {
     return (
         <div className="weather-hourly">
             {hourly.map((hour, key) => {
                 return (<Item key={key}
-                              time={new Date( +(hour.dt + '000')).toLocaleString("ru", {hour: 'numeric', minute: 'numeric'})}
+                              time={getHourAndMinuteRuNumeric(hour.dt)}
                               temp={Math.round(hour.temp)}
                               iconCode={ hour.weather[0].icon}/>)
             })}
         </div>
     )
+}
+const getDateToLocaleString = (dt, locales, options) => {
+    return new Date( +(dt + '000')).toLocaleString(locales, options)
+}
+const getHourAndMinuteRuNumeric = (dt) => {
+    return getDateToLocaleString(dt, "ru", {hour: 'numeric', minute: 'numeric'})
 }
 
 export default WeatherHourly
