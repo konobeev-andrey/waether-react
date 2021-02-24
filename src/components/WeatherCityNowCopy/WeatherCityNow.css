@@ -129,7 +129,7 @@
     text-align: center;
     padding-top: 22px;
     padding-bottom: 15px;
-    height: 130px;
+    min-height: 130px;
     box-sizing: content-box;
 }
 
@@ -138,11 +138,6 @@
     min-width: 64px;
 }
 
-.item > div {
-    position: relative;
-    overflow: hidden;
-    height: 50%;
-}
 .wrapperImg{
     position: relative;
     overflow: hidden;

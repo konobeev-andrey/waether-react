@@ -5,7 +5,6 @@ export const getWeatherInCity = createAsyncThunk('weatherCity/getWeather',
     async ([lat, lon]) => {
         const r = await weatherApi.getWeather(lat, lon).then(response => {
            const  {current, hourly, daily, alerts, timezone_offset} = {...response.data}
-            console.log( {current, hourly, daily, alerts, timezone_offset});
            return {current, hourly, daily, alerts, timezone_offset}
         })
         return r

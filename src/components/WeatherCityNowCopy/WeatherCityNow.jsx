@@ -21,7 +21,7 @@ const WeatherCityNowCopy = (props) => {
         }, [])
     }
 
-    const getdirectionWind = (wind_deg) => {
+    const getDirectionWind = (wind_deg) => {
         if(wind_deg>23 && wind_deg <= 68) return 'СВ'
         if(wind_deg>68 && wind_deg <= 113) return 'В'
         if(wind_deg>113 && wind_deg <= 158) return 'ЮВ'
@@ -51,7 +51,7 @@ const WeatherCityNowCopy = (props) => {
                     <div className="weather-now__wind-humidity-pressure">
                         <div className="weather-now__wind">
                             <img src={iconWind} alt="Icon"/>
-                            <p>{props.windSpeed} м/с, {getdirectionWind(props.windDeg)}</p>
+                            <p>{props.windSpeed} м/с, {getDirectionWind(props.windDeg)}</p>
                         </div>
                         <div className="weather-now__humidity">
                             <img src={iconHumidity} alt="Icon"/>

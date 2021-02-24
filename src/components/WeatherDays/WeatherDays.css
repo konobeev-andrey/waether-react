@@ -1,0 +1,23 @@
+
+
+@media screen and (max-width: 800px) {
+    .weather-day {
+        grid-template-columns: 1fr;
+        line-height: 64px;
+        font-size: 20px;
+    }
+    .weather-day > .item {
+        height: 64px;
+        display:grid;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .weather-day > .item > .wrapperImg{
+        height: 100%;
+    }
+    .weather-day > .item > .item__time {
+        text-align: left;
+    }
+    .weather-day > .item > .item__temperature {
+        text-align: right;
+    }
+}

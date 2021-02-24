@@ -20,5 +20,7 @@ const getDateToLocaleString = (dt, locales, options) => {
 const getHourAndMinuteRuNumeric = (dt) => {
     return getDateToLocaleString(dt, "ru", {hour: 'numeric', minute: 'numeric'})
 }
-
+const getDayRuNumeric = (dt) => {
+    return getDateToLocaleString(dt, 'ru', {month: 'short', day: 'numeric'})
+}
 export default WeatherHourly
