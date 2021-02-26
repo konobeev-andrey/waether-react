@@ -1,11 +1,14 @@
 import React from 'react';
 import './WeatherHourly.css'
 import Item from "../Item/Item";
+import {useSelector} from "react-redux";
+import {getHourly} from '../../Redux/selectors'
 
 const WeatherHourly = ({hourly}) => {
+    const weatherHourly = useSelector(getHourly)
     return (
         <div className="weather-hourly">
-            {hourly.map((hour, key) => {
+            {weatherHourly.map((hour, key) => {
                 return (<Item key={key}
                               time={getHourAndMinuteRuNumeric(hour.dt)}
                               temp={Math.round(hour.temp)}
