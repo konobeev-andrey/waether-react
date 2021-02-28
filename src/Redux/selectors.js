@@ -3,11 +3,11 @@ import {createSelector} from 'reselect'
 const getDateToLocaleString = (dt, locales, options) => {
     return new Date( +(dt + '000')).toLocaleString(locales, options)
 }
-const getHourAndMinuteRuNumeric = (dt) => {
-    return getDateToLocaleString(dt, "ru", {hour: 'numeric', minute: 'numeric'})
+export const getHourAndMinuteRuNumeric = (dt, timeZone) => {
+    return getDateToLocaleString(dt, "ru", {hour: 'numeric', minute: 'numeric', timeZone:timeZone})
 }
-export const getDayRuNumeric = (dt) => {
-    return getDateToLocaleString(dt, 'ru', {month: 'short', day: 'numeric'})
+export const getDayRuNumeric = (dt, timeZone) => {
+    return getDateToLocaleString(dt, 'ru', {month: 'short', day: 'numeric', timeZone: timeZone})
 }
 const getDirectionWind = (wind_deg) => {
     if(wind_deg>23 && wind_deg <= 68) return 'СВ'
@@ -23,9 +23,10 @@ const getDirectionWind = (wind_deg) => {
 const round = (number) => {
     return Math.round(number)
 }
+export const getTimeZoneSelector = (state) => state.rootReducer.city.data.timezone
 
 const getDateCurrentSelector = (state) =>  state.rootReducer.city.data.current.dt
-export const getDateCurrent = createSelector(getDateCurrentSelector, getDayRuNumeric)
+export const getDateCurrent = createSelector(getDateCurrentSelector, getTimeZoneSelector, getDayRuNumeric)
 
 const getDaysSelector  = (state) => state.rootReducer.city.data.daily
 export const getDays = createSelector(getDaysSelector, (days) => days.filter((day, index) => {
@@ -47,3 +48,9 @@ export const getWindDeg = createSelector(getWindDegSelector, getDirectionWind);
 
 const getTempCurrentSelector = state => state.rootReducer.city.data.current.temp
 export const getTempCurrent = createSelector(getTempCurrentSelector, round)
+
+const getFeelsLikeSelector = state => state.rootReducer.city.data.current.feels_like
+export const getFeelsLike = createSelector(getFeelsLikeSelector, round)
+
+const getWindSpeedSelector = state => state.rootReducer.city.data.current.wind_speed
+export const getWindSpeed = createSelector(getWindSpeedSelector, round)

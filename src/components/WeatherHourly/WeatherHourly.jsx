@@ -2,28 +2,23 @@ import React from 'react';
 import './WeatherHourly.css'
 import Item from "../Item/Item";
 import {useSelector} from "react-redux";
-import {getHourly} from '../../Redux/selectors'
+import {getHourAndMinuteRuNumeric, getHourly, getTimeZoneSelector} from '../../Redux/selectors'
 
-const WeatherHourly = ({hourly}) => {
+const WeatherHourly = () => {
+
     const weatherHourly = useSelector(getHourly)
+    const timeZone = useSelector(getTimeZoneSelector)
+
     return (
         <div className="weather-hourly">
             {weatherHourly.map((hour, key) => {
                 return (<Item key={key}
-                              time={getHourAndMinuteRuNumeric(hour.dt)}
+                              time={getHourAndMinuteRuNumeric(hour.dt, timeZone)}
                               temp={Math.round(hour.temp)}
-                              iconCode={ hour.weather[0].icon}/>)
+                              iconCode={hour.weather[0].icon}/>)
             })}
         </div>
     )
 }
-const getDateToLocaleString = (dt, locales, options) => {
-    return new Date( +(dt + '000')).toLocaleString(locales, options)
-}
-const getHourAndMinuteRuNumeric = (dt) => {
-    return getDateToLocaleString(dt, "ru", {hour: 'numeric', minute: 'numeric'})
-}
-const getDayRuNumeric = (dt) => {
-    return getDateToLocaleString(dt, 'ru', {month: 'short', day: 'numeric'})
-}
+
 export default WeatherHourly

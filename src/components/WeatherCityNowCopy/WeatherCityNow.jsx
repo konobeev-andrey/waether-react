@@ -1,13 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import './WeatherCityNow.css';
 import cn from 'classnames'
-import iconDefault from '../../image/IconWeather/04n.png'
 import iconWind from '../../image/wind.png'
 import iconHumidity from '../../image/humidity.png'
 import iconPressure from '../../image/pressure.png'
 import {connect} from "react-redux";
 import WeatherHourly from "../WeatherHourly/WeatherHourly";
-import{ getDateCurrent, getWindDeg, getTempCurrent} from '../../Redux/selectors'
+import {getDateCurrent, getWindDeg, getTempCurrent, getFeelsLike, getWindSpeed} from '../../Redux/selectors'
 
 const WeatherCityNowCopy = (props) => {
     const [icon, setIcon] = useState('')
@@ -53,16 +52,13 @@ const WeatherCityNowCopy = (props) => {
 };
 
 
-const round = (number) => {
-    return Math.round(number)
-}
 const mstp = (store) => ({
     city: store.rootReducer.city.value,
     date: getDateCurrent(store),
     temp: getTempCurrent(store),
-    feelsLike: round(store.rootReducer.city.data.current.feels_like),
+    feelsLike: getFeelsLike(store),
     humidity: store.rootReducer.city.data.current.humidity,
-    windSpeed: round(store.rootReducer.city.data.current.wind_speed),
+    windSpeed: getWindSpeed(store),
     windDeg: getWindDeg(store),
     pressure: store.rootReducer.city.data.current.pressure,
     description: store.rootReducer.city.data.current.weather[0].description,
