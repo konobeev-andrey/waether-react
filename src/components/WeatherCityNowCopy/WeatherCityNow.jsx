@@ -4,21 +4,23 @@ import cn from 'classnames'
 import iconWind from '../../image/wind.png'
 import iconHumidity from '../../image/humidity.png'
 import iconPressure from '../../image/pressure.png'
-import {connect} from "react-redux";
+import {connect, useDispatch} from "react-redux";
 import WeatherHourly from "../WeatherHourly/WeatherHourly";
 import {getDateCurrent, getWindDeg, getTempCurrent, getFeelsLike, getWindSpeed} from '../../Redux/selectors'
+import {addCity} from '../../Redux/saveCity'
 
 const WeatherCityNowCopy = (props) => {
     const [icon, setIcon] = useState('')
     useEffect(() => {
         import (`../../image/IconWeather/${props.iconCode}.png`).then((icon) => setIcon(icon.default))
     }, [props.iconCode])
+    const dispatch = useDispatch()
 
     return props.pending ? <h1>111111</h1> : (
         <div className='weather-toDay'>
             <div className='weather-toDay__block-now'>
                 <div className='wrapper-sity-date'>
-                    <div className='wrapper-sity-date__name-sity'>{props.city}</div>
+                    <div onClick={()=> dispatch(addCity({value:props.city,}))} className='wrapper-sity-date__name-sity'>{props.city}</div>
                     {/* <div className='wrapper-sity-date__today-date'>{props.date}</div> */}
                 </div>
                 <div className="weather-now">
@@ -64,5 +66,5 @@ const mstp = (store) => ({
     description: store.rootReducer.city.data.current.weather[0].description,
     iconCode: store.rootReducer.city.data.current.weather[0].icon,
 })
-export default connect(mstp, {})(WeatherCityNowCopy);
+export default connect(mstp, {addCity})(WeatherCityNowCopy);
 
