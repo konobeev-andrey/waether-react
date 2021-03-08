@@ -2,12 +2,14 @@ import React, {useEffect, useState} from 'react';
 import './WeatherCityNow.css';
 import cn from 'classnames'
 import iconWind from '../../image/wind.png'
+import iconStar from '../../image/icons8-star-50.png'
 import iconHumidity from '../../image/humidity.png'
 import iconPressure from '../../image/pressure.png'
 import {connect, useDispatch} from "react-redux";
 import WeatherHourly from "../WeatherHourly/WeatherHourly";
 import {getDateCurrent, getWindDeg, getTempCurrent, getFeelsLike, getWindSpeed} from '../../Redux/selectors'
 import {addCity} from '../../Redux/saveCity'
+import StarFavorites from "../UI/StarFavorites/StarFavorites";
 
 const WeatherCityNowCopy = (props) => {
     const [icon, setIcon] = useState('')
@@ -20,8 +22,10 @@ const WeatherCityNowCopy = (props) => {
         <div className='weather-toDay'>
             <div className='weather-toDay__block-now'>
                 <div className='wrapper-sity-date'>
-                    <div onClick={()=> dispatch(addCity({value:props.city,}))} className='wrapper-sity-date__name-sity'>{props.city}</div>
+                    <div className='wrapper-sity-date__name-sity'>{props.city}</div>
                     {/* <div className='wrapper-sity-date__today-date'>{props.date}</div> */}
+                    {/*<div className='wrapperImg wrapper-sity-date__today-date'><img src={iconStar}/></div>*/}
+                    <StarFavorites/>
                 </div>
                 <div className="weather-now">
                     <div className="weather-now__temperature">

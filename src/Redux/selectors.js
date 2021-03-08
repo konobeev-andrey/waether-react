@@ -23,6 +23,7 @@ const getDirectionWind = (wind_deg) => {
 const round = (number) => {
     return Math.round(number)
 }
+
 export const getTimeZoneSelector = (state) => state.rootReducer.city.data.timezone
 
 const getDateCurrentSelector = (state) =>  state.rootReducer.city.data.current.dt
@@ -54,3 +55,11 @@ export const getFeelsLike = createSelector(getFeelsLikeSelector, round)
 
 const getWindSpeedSelector = state => state.rootReducer.city.data.current.wind_speed
 export const getWindSpeed = createSelector(getWindSpeedSelector, round)
+
+const getCitySelector = state => state.rootReducer.city.value
+const getLonSelector = state => state.rootReducer.city.lon
+const getLatSelector = state => state.rootReducer.city.lat
+
+export const getFavoritesCity = createSelector(getCitySelector, getLatSelector, getLonSelector, (city,lat,lon) => ({city,lat,lon}))
+
+export const getSaveCitySelector = state => state.rootReducer.saveCity

@@ -16,6 +16,8 @@
 }
 
 .wrapper-sity-date {
+    display: grid;
+    grid-template-columns: 90% 10%;
     font-style: normal;
     font-weight: normal;
     font-size: var(--fontSize-sityDate);
@@ -23,6 +25,8 @@
 }
 
 .wrapper-sity-date__today-date {
+    overflow: visible;
+    height: 100%;
     text-align: right;
     float: right;
     display: inline-block;
