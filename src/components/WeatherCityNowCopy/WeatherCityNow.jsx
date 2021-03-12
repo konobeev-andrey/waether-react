@@ -10,6 +10,7 @@ import WeatherHourly from "../WeatherHourly/WeatherHourly";
 import {getDateCurrent, getWindDeg, getTempCurrent, getFeelsLike, getWindSpeed} from '../../Redux/selectors'
 import {addCity} from '../../Redux/saveCity'
 import StarFavorites from "../UI/StarFavorites/StarFavorites";
+import FavoritesCity from "../UI/FavoritesCity/FavoritesCity";
 
 const WeatherCityNowCopy = (props) => {
     const [icon, setIcon] = useState('')
@@ -20,6 +21,7 @@ const WeatherCityNowCopy = (props) => {
 
     return props.pending ? <h1>111111</h1> : (
         <div className='weather-toDay'>
+            <FavoritesCity/>
             <div className='weather-toDay__block-now'>
                 <div className='wrapper-sity-date'>
                     <div className='wrapper-sity-date__name-sity'>{props.city}</div>
