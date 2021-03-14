@@ -8,7 +8,7 @@ import {getWeatherInCity} from "./Redux/weatherCitySlice";
 import {connect, useDispatch} from "react-redux";
 import WeatherCityNowCopy from "./components/WeatherCityNowCopy/WeatherCityNow";
 import WeatherDays from "./components/WeatherDays/WeatherDays";
-
+import FavoritesCity from "./components/UI/FavoritesCity/FavoritesCity.jsx";
 
 const {Search} =UI
 
@@ -25,6 +25,7 @@ const App = (props) => {
         <div className='background_image'>
             <div className='background_shadow'>
                 <div className="App">
+                    <FavoritesCity/>
                     <Search className='Search--layout'/>
                     <div className='wrapper_content'>
                         {props.pending ? <h1>22222</h1> : <WeatherCityNowCopy/>}

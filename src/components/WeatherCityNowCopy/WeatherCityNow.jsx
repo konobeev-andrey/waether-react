@@ -21,7 +21,6 @@ const WeatherCityNowCopy = (props) => {
 
     return props.pending ? <h1>111111</h1> : (
         <div className='weather-toDay'>
-            <FavoritesCity/>
             <div className='weather-toDay__block-now'>
                 <div className='wrapper-sity-date'>
                     <div className='wrapper-sity-date__name-sity'>{props.city}</div>

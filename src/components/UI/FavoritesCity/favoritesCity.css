@@ -1,0 +1,15 @@
+.favorites-city-wrapper{
+    margin: 0 auto 0;
+    grid-column: 2/-2;
+    width: 100%;
+    max-width: 760px;
+}
+.favorites-city-wrapper > ul{
+    overflow-x: auto;
+    padding: 0;
+}
+.favorites-city-wrapper > ul > li{
+    font-size: var(--fontSize-toDayBlokNow);
+    padding: 0.5em;
+    display: inline-block;
+}
