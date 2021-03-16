@@ -23,7 +23,9 @@ function Search(props) {
     const dispatch = useDispatch()
     const localChoose = (e) => {
         if (!(e.value === '')) {
-            dispatch(choose(e))
+            // console.log(e)
+            // dispatch(choose(e))
+            props.history.push(`/${e.data.geo_lat}/${e.data.geo_lon}`)
         }
     }
     return (<ReactDadataBox payloadModifier={query}

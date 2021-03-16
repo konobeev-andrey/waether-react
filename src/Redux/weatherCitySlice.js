@@ -10,10 +10,11 @@ export const getWeatherInCity = createAsyncThunk('weatherCity/getWeather',
         return r
     })
 
-const getReductionValue = (action) => {
-    return action.payload.data.settlement ?
-        `${action.payload.data.settlement_type}. ${action.payload.data.settlement}`:
-        `${action.payload.data.city_type}. ${action.payload.data.city}`;
+const getReductionValue = (data) => {
+    if(!data.settlement && !data.city) return 'Неизвестный населенный пункт'
+    return data.settlement ?
+        `${data.settlement_type}. ${data.settlement}`:
+        `${data.city_type}. ${data.city}`;
 }
 
 const weatherCitySlice = createSlice({
@@ -28,11 +29,11 @@ const weatherCitySlice = createSlice({
     },
     reducers: {
         choose(state, action) {
-            console.log(action.payload.settlement_with_type)
-            state.lat = action.payload.data.geo_lat
-            state.lon = action.payload.data.geo_lon
-            state.value =  getReductionValue(action)
-            state.geoname_id = action.payload.data.geoname_id
+            const data = action.payload.data
+            state.lat = data.geo_lat
+            state.lon = data.geo_lon
+            state.value =  getReductionValue(data)
+            state.geoname_id = data.geoname_id
         },
         setWeatherCity(state, action) {
             state.data = action.payload

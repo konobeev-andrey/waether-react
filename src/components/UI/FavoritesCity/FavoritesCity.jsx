@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useSelector} from "react-redux";
 import {getSaveCitySelector} from "../../../Redux/selectors";
 import './favoritesCity.css'
+import {Link} from "react-router-dom";
 
 
 const FavoritesCity = () => {
@@ -14,13 +15,13 @@ const FavoritesCity = () => {
             arr.push(saveCity.list[key])
         }
         setArrSaveCity(arr)
-        console.log(arrSaveCity)
+
     },[saveCity])
 
     return(
         <div className='favorites-city-wrapper'>
             <ul>
-                {arrSaveCity.map((s, key) => <li key={key}>{s.city}</li> )}
+                {arrSaveCity.map((s, key) => <li key={key}><Link to={`/${s.lat}/${s.lon}`}>{s.city}</Link></li> )}
             </ul>
         </div>
     )
