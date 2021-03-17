@@ -31,18 +31,3 @@
 .favorites-city-wrapper > ul > li > a:active{
     background: rgba(255, 255, 255, 0.15);
 }
-.favorites-city-wrapper > ul::-webkit-scrollbar {
-    width: 24px; /* ширина для вертикального скролла */
-    height: 1px; /* высота для горизонтального скролла */
-    background-color: rgba(255, 255, 255, 0.1);
-}
-/* ползунок скроллбара */
-.favorites-city-wrapper > ul::-webkit-scrollbar-thumb {
-    background-color: #843465;
-    border-radius: 9em;
-    box-shadow: inset 1px 1px 10px #f3faf7;
-}
-
-.favorites-city-wrapper > ul::-webkit-scrollbar-thumb:hover {
-    background-color: #253861;
-}
