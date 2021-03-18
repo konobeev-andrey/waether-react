@@ -13,6 +13,7 @@
     scrollbar-width: thin;
 }
 .favorites-city-wrapper > ul > li{
+    margin-right: 0.2em;
     display: inline-block;
 }
 .favorites-city-wrapper > ul > li > a{
@@ -26,8 +27,12 @@
 }
 
 .favorites-city-wrapper > ul > li > a:hover{
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.15);
 }
 .favorites-city-wrapper > ul > li > a:active{
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.25);
+}
+.favorites-city-wrapper__list >li> a.active{
+    background: rgba(255, 255, 255, 0.25);
+
 }

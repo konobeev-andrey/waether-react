@@ -23,5 +23,5 @@ export const cityByCoordinates = async (lat, lon) => {
                 "Accept": "application/json",
                 "Authorization": "Token " + '9e301eb40c65b7139ac2be7fec19e0d4bdc53eac'
             }
-        }).then(resp => resp.data.suggestions[0].data)
+        }).then(resp => resp.data.suggestions[0])
     )}

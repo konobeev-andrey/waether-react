@@ -4,7 +4,7 @@ import './App.css'
 import {UI} from  './components/UI'
 // import WeatherCityNow from "./components/WeatherCityNow/WeatherCityNow";
 import icon from "./image/IconWeather/04n.png";
-import {choose, getWeatherInCity} from "./Redux/weatherCitySlice";
+import {choose, getWeatherInCity,getCityByCoordinates} from "./Redux/weatherCitySlice";
 import {connect, useDispatch} from "react-redux";
 import WeatherCityNowCopy from "./components/WeatherCityNowCopy/WeatherCityNow";
 import WeatherDays from "./components/WeatherDays/WeatherDays";
@@ -17,11 +17,14 @@ const {Search} =UI
 const App = (props) => {
     const dispatch = useDispatch()
 
-    useEffect(async ()=>{
-        const{lat, lon} = props.match.params
+    const ggg = async (lat,lon)=>{
         const data = await cityByCoordinates(lat, lon) || {geo_lat:lat, geo_lon:lon}
-
         dispatch(choose({data}))
+    }
+
+    useEffect(() => {
+        const{lat, lon} = props.match.params
+        dispatch(getCityByCoordinates([lat, lon]))
     },[props.match.params])
 
     useEffect( () => {

@@ -1,5 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
-import {weatherApi} from "../api/weatherApi";
+import {weatherApi,cityByCoordinates} from "../api/weatherApi";
+
 
 export const getWeatherInCity = createAsyncThunk('weatherCity/getWeather',
     async ([lat, lon]) => {
@@ -10,11 +11,26 @@ export const getWeatherInCity = createAsyncThunk('weatherCity/getWeather',
         return r
     })
 
+    export const getCityByCoordinates = createAsyncThunk('weatherCity/getCityByCoordinates',
+    async ([lat, lon]) => {
+        const r = await cityByCoordinates(lat, lon).then(response => {
+            console.log(response)
+           return response || {geo_lat:lat, geo_lon:lon}
+        })
+        return r
+    })
+
 const getReductionValue = (data) => {
     if(!data.settlement && !data.city) return 'Неизвестный населенный пункт'
     return data.settlement ?
         `${data.settlement_type}. ${data.settlement}`:
         `${data.city_type}. ${data.city}`;
+}
+const setChooseState = (state, action) => {
+    const data = action.payload.data
+    state.lat = data.geo_lat
+    state.lon = data.geo_lon
+    state.value =  getReductionValue(data)
 }
 
 const weatherCitySlice = createSlice({
@@ -29,11 +45,7 @@ const weatherCitySlice = createSlice({
     },
     reducers: {
         choose(state, action) {
-            const data = action.payload.data
-            state.lat = data.geo_lat
-            state.lon = data.geo_lon
-            state.value =  getReductionValue(data)
-            state.geoname_id = data.geoname_id
+            setChooseState(state, action)
         },
         setWeatherCity(state, action) {
             state.data = action.payload
@@ -44,10 +56,19 @@ const weatherCitySlice = createSlice({
             state.pending = true
         },
         [getWeatherInCity.fulfilled]: (state, action) => {
-            state.data = action.payload
+            state.data = action.payload;
             state.pending = false
         },
         [getWeatherInCity.rejected]: (state, action) => {
+
+        },
+        [getCityByCoordinates.pending]: (state, action) => {
+            state.pending = true
+        },
+        [getCityByCoordinates.fulfilled]: (state, action) => {
+            setChooseState(state, action);
+        },
+        [getCityByCoordinates.rejected]: (state, action) => {
 
         },
     }
